@@ -1,0 +1,17 @@
+[project]
+name = "comfyui-mulacover-t8"
+version = "0.1.0"
+description = "Native ComfyUI nodes for MuLaCover music rearrangement"
+requires-python = ">=3.10"
+dependencies = [
+  "accelerate==1.12.0", "einops==0.8.1", "librosa>=0.10.2,<0.12",
+  "mido>=1.3,<2", "numpy>=1.26,<2.1", "safetensors>=0.4", "scipy>=1.10,<2",
+  "soundfile>=0.12", "tokenizers==0.22.1", "tqdm==4.67.1", "transformers==4.57.6",
+]
+
+[project.urls]
+Repository = "https://github.com/T8mars/Comfyui-Mulacover-T8"
+
+[tool.comfy]
+PublisherId = "t8star"
+DisplayName = "ComfyUI MuLaCover T8"

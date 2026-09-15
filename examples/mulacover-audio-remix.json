@@ -1,0 +1,92 @@
+{
+  "last_node_id": 5,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "T8MuLaCoverModelLoader",
+      "pos": [80, 80],
+      "size": [360, 150],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [{"name": "model", "type": "MULACOVER_MODEL", "links": [1, 3], "slot_index": 0}],
+      "properties": {"Node name for S&R": "T8MuLaCoverModelLoader"},
+      "widgets_values": ["", "auto", "bfloat16", true]
+    },
+    {
+      "id": 2,
+      "type": "T8MuLaCoverStyle",
+      "pos": [80, 290],
+      "size": [360, 190],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [{"name": "style_tags", "type": "STRING", "links": [5], "slot_index": 0}],
+      "properties": {"Node name for S&R": "T8MuLaCoverStyle"},
+      "widgets_values": ["Longing", "Mandarin pop", "piano, strings, drums", "warm, hopeful"]
+    },
+    {
+      "id": 3,
+      "type": "T8MuLaCoverAudioCondition",
+      "pos": [500, 80],
+      "size": [390, 210],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "MULACOVER_MODEL", "link": 1},
+        {"name": "audio", "type": "AUDIO", "link": 2}
+      ],
+      "outputs": [{"name": "condition", "type": "MULACOVER_CONDITION", "links": [4], "slot_index": 0}],
+      "properties": {"Node name for S&R": "T8MuLaCoverAudioCondition"},
+      "widgets_values": [0, 0, 0]
+    },
+    {
+      "id": 4,
+      "type": "T8MuLaCoverGenerate",
+      "pos": [960, 80],
+      "size": [470, 470],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "MULACOVER_MODEL", "link": 3},
+        {"name": "condition", "type": "MULACOVER_CONDITION", "link": 4},
+        {"name": "style_tags", "type": "STRING", "link": 5}
+      ],
+      "outputs": [
+        {"name": "audio", "type": "AUDIO", "links": null, "slot_index": 0},
+        {"name": "output_info", "type": "STRING", "links": null, "slot_index": 1}
+      ],
+      "properties": {"Node name for S&R": "T8MuLaCoverGenerate"},
+      "widgets_values": ["[Verse]\n在晚风里重新唱起这段旋律\n\n[Chorus]\n让新的声音越过旧日回忆", 30, 1.5, 1, 250, 831001, 831002]
+    },
+    {
+      "id": 5,
+      "type": "LoadAudio",
+      "pos": [80, 540],
+      "size": [360, 130],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [{"name": "AUDIO", "type": "AUDIO", "links": [2], "slot_index": 0}],
+      "properties": {"Node name for S&R": "LoadAudio"},
+      "widgets_values": [""]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 3, 0, "MULACOVER_MODEL"],
+    [2, 5, 0, 3, 1, "AUDIO"],
+    [3, 1, 0, 4, 0, "MULACOVER_MODEL"],
+    [4, 3, 0, 4, 1, "MULACOVER_CONDITION"],
+    [5, 2, 0, 4, 2, "STRING"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {"info": "选择音频、填写歌词和曲风后即可运行。"},
+  "version": 0.4
+}

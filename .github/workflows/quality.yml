@@ -1,0 +1,35 @@
+name: Quality
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  static-checks:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile Python
+        run: python -m compileall -q .
+      - name: Validate example workflows
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          for path in Path("examples").glob("*.json"):
+              json.loads(path.read_text(encoding="utf-8"))
+              print(path)
+      - name: Reject service bridges and packaged weights
+        shell: python
+        run: |
+          from pathlib import Path
+          source = "\n".join(path.read_text(encoding="utf-8") for path in Path(".").glob("*.py"))
+          assert "127.0.0.1" not in source and "/api/jobs" not in source
+          forbidden = {".safetensors", ".ckpt", ".pth", ".bin", ".gguf"}
+          assert not [path for path in Path(".").rglob("*") if path.suffix.lower() in forbidden]
