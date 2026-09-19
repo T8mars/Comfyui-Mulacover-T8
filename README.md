@@ -75,3 +75,14 @@ python download_models.py --model-root "D:\ComfyUI\models\MuLaCover-T8"
 **Primary thanks go to the original MuLaCover authors, the [HeartMuLa team and contributors](https://github.com/HeartMuLa/MuLaCover)**, for releasing the MuLaCover model, inference implementation and documentation. This plugin is a native ComfyUI integration layer around the upstream project; its repository remains the authoritative source for model updates, research details and licensing.
 
 The vendored `vendor/mulacover` code keeps its Apache-2.0 license. Model weights and generated audio follow the upstream `MODEL_LICENSE` and are restricted to non-commercial use. The T8star-authored files provide ComfyUI node definitions, local model-path reuse, condition wiring and workflow examples; they do not claim ownership of the upstream model or algorithm.
+
+## T8 项目链接
+
+- 主项目与源码：[Comfyui-YuE2-T8](https://github.com/T8mars/Comfyui-YuE2-T8)
+- B站：[T8star-Aix](https://space.bilibili.com/385085361)
+- YouTube：[T8star-Aix](https://www.youtube.com/@T8star-Aix/)
+- API 注册：[Seedance API](https://api.seedance.nz/sign-up?aff=5f4w)
+- 在线 AI 应用：[RunningHub](https://www.runninghub.ai/zh-cn/user-center/1907375370302308353/userPost?inviteCode=rh-v1121)
+- ComfyUI 整合包：[夸克网盘](https://pan.quark.cn/s/264edb7e36bd)
+- Hugging Face：[T8star](https://huggingface.co/t8star)
+- YuE2 模型仓库：[YuE2-Comfy](https://huggingface.co/t8star/YuE2-Comfy)
