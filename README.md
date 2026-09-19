@@ -2,6 +2,17 @@
 
 MuLaCover 的原生 ComfyUI 节点。它在 ComfyUI 的 Python 进程内直接加载模型，不依赖网页服务，也不通过 HTTP 桥接。
 
+## 来源与致谢
+
+**主要感谢 MuLaCover 原作者 [HeartMuLa 团队及贡献者](https://github.com/HeartMuLa/MuLaCover)** 开源 MuLaCover 模型、推理代码和生成指南。本项目是围绕上游 MuLaCover 的 ComfyUI 原生节点适配层；论文、模型说明与上游更新请以上游仓库为准。
+
+- 上游 MuLaCover 代码：[HeartMuLa/MuLaCover](https://github.com/HeartMuLa/MuLaCover)
+- MuLaCover 权重：[HeartMuLa/MuLaCover](https://huggingface.co/HeartMuLa/MuLaCover)
+- HeartCodec 权重：[HeartMuLa/HeartCodec-oss-20260123](https://huggingface.co/HeartMuLa/HeartCodec-oss-20260123)
+- 符号转录依赖：[YourMT3](https://github.com/magenta/mt3) 及 MuLaCover 使用的 ChordNet 检查点
+
+本仓库的 `vendor/mulacover` 保留上游 Apache-2.0 许可文件；模型权重及生成结果遵循上游 `MODEL_LICENSE` 的非商业使用条款。`nodes.py`、`mulacover_runtime.py`、模型路径复用、ComfyUI 数据类型和工作流示例是 T8star 为 ComfyUI 编写的适配代码，未声称拥有上游模型或算法的版权。感谢 HeartMuLa 让本项目能够在本地音乐工作台和 ComfyUI 中复用这些能力。
+
 ## 能做什么
 
 - 从参考歌曲提取旋律、和弦和鼓组，再用新歌词和新曲风生成完整歌曲。
@@ -58,3 +69,9 @@ python download_models.py --model-root "D:\ComfyUI\models\MuLaCover-T8"
 参数建议：先用 30 秒、`CFG 1.5`、`Temperature 1.0`、`Top-K 250`。男声演唱过高时把旋律降低 12 半音；女声需要更高音域时升高 12 半音。
 
 已在 Windows、RTX 5090 Laptop 24GB、Python 3.12.10、Torch 2.10.0+cu128 环境用上述原生节点链实测生成 48 kHz 双声道音频。参考音频转谱和 30 秒完整工作台任务也已通过；详细记录见主项目的 [VALIDATION.md](https://github.com/T8mars/Comfyui-YuE2-T8/blob/main/VALIDATION.md)。
+
+## Attribution and thanks
+
+**Primary thanks go to the original MuLaCover authors, the [HeartMuLa team and contributors](https://github.com/HeartMuLa/MuLaCover)**, for releasing the MuLaCover model, inference implementation and documentation. This plugin is a native ComfyUI integration layer around the upstream project; its repository remains the authoritative source for model updates, research details and licensing.
+
+The vendored `vendor/mulacover` code keeps its Apache-2.0 license. Model weights and generated audio follow the upstream `MODEL_LICENSE` and are restricted to non-commercial use. The T8star-authored files provide ComfyUI node definitions, local model-path reuse, condition wiring and workflow examples; they do not claim ownership of the upstream model or algorithm.
